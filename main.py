@@ -1,5 +1,5 @@
 #!./.ppm_venv/bin/python3
-from Terminal import Terminal
+from Terminal.Terminal import Terminal
 from Application import Application
 import argparse
 
@@ -26,5 +26,12 @@ if __name__ == "__main__":
     match app.action:
         case "create":
             pass
+            # get the info for the new credentials
+            terminal.write("This is a test", terminal.colors.WARNING)
+
+            # create new credentials object
+
+            # save the new credentials
+            
         case "lookup":
             pass
