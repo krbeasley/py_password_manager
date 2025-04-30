@@ -1,17 +1,11 @@
 #!./.ppm_venv/bin/python3
 from Terminal import Terminal
+from Application import Application
 import argparse
 
 parser = argparse.ArgumentParser()  # Initialize the argument parser 
-terminal = Terminal()              # Initialize the terminal window handler
-
-# Application Status
-app_status = {
-    "force": False,
-    "create": False,
-    "lookup": True,
-    "verbose": True,
-}
+terminal = Terminal()               # Initialize the terminal window handler
+app = Application()                 # Initialize the application instance
 
 # Accepted arguments
 parser.add_argument('-n', help="Create a new password entry.", action=argparse.BooleanOptionalAction, default=False)
@@ -23,15 +17,14 @@ parser.add_argument('-v', help='Specify verbose output. Default off', action=arg
 
 if __name__ == "__main__":
     args = parser.parse_args()
-
-    # Intialize the application status
-    app_status['force'] = args.f
-    app_status['create'] = args.n
-    app_status['lookup'] = not args.n
-    app_status['verbose'] = args.v
+    app.initialize(args.n, args.f, args.v)
 
     username = args.u
     domain = args.d
     password = args.p
 
-    
+    match app.action:
+        case "create":
+            pass
+        case "lookup":
+            pass
